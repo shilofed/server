@@ -24,5 +24,5 @@ def save_data():
 
 if __name__ == "__main__":
     scheduler = BlockingScheduler()
-    scheduler.add_job(save_data, 'interval', seconds=1)
+    scheduler.add_job(save_data, 'interval', hours=3)
     scheduler.start()
