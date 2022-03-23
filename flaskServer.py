@@ -1,3 +1,5 @@
+import pickle
+
 import numpy as np
 import requests
 from flask import Flask
@@ -9,31 +11,17 @@ import ast
 app = Flask(__name__)
 
 
-class Game:
-    def __init__(self, game):
-        self.game = game
-        self.comeback = game.get_score_greatest_comeback()
-        self.close_game = game.get_score_close_game()
-        self.best_teams = game.get_score_best_teams()
-        self.personal_performance = game.get_score_personal_performance()
-
-
-games_stats = games_stats_factory.get_games_stats()
-games = []
-for game in games_stats:
-    games.append(Game(game))
-
 @app.route("/<arg>")
 def get_best_game(arg):
     print(arg)
-
+    with open("games.gms", "rb") as f:
+        games = pickle.load(f)
     biggest_score = -np.inf
     pref = arg.split(";")
     pref = list(filter(bool, pref))
     pref_dict = {}
     for p in pref:
         cur_pref = p.split("=")
-        # print(cur_pref)
         pref_dict[cur_pref[0]] = cur_pref[1]
     best_score = None
     for game_class in games:
