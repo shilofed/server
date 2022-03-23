@@ -23,6 +23,12 @@ def save_data():
 
 
 if __name__ == "__main__":
+    games_stats = games_stats_factory.get_games_stats()
+    games = []
+    for game in games_stats:
+        games.append(Game(game))
+    with open("games.gms", "wb") as f:
+        pickle.dump(games, f)
     scheduler = BlockingScheduler()
     scheduler.add_job(save_data, 'interval', hours=3)
     scheduler.start()
