@@ -29,15 +29,15 @@ def get_best_game(arg):
         games = pickle.load(f)
     for game_class in games:
         score = 0
-        if 'Great comeback' in pref_dict:
+        if 'Great_comeback' in pref_dict:
             score += int(pref_dict['Great comeback']) * game_class.comeback
-        if 'Close game' in pref_dict:
+        if 'Close_game' in pref_dict:
             score += int(pref_dict['Close game']) * game_class.close_game
-        if 'Good teams' in pref_dict:
+        if 'Good_teams' in pref_dict:
             score += int(pref_dict['Good teams']) * game_class.best_teams
-        if 'High game rate' in pref_dict:
+        if 'High_game_rate' in pref_dict:
             score += int(pref_dict['High game rate']) * game_class.high_game_rate
-        if 'personal performance' in pref_dict:
+        if 'personal_performance' in pref_dict:
             score += int(pref_dict['personal performance']) * game_class.personal_performance
 
         # print("score= ", score)
