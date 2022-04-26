@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route("/<arg>")
 def get_best_game(arg):
-    print(arg)
+    # print(arg)
     # with open("games.gms", "rb") as f:
     #     games = pickle.load(f)
     biggest_score = -np.inf
@@ -52,7 +52,7 @@ def get_best_game(arg):
         json_response["team_1_id"] = int(best_score.line_score.TEAM_ID[0])
         json_response["team_2_id"] = int(best_score.line_score.TEAM_ID[1])
     # print("biggest score = ", biggest_score)
-    print("return")
+    # print("return")
     return json.dumps(json_response)
 
 
