@@ -36,6 +36,6 @@ def get_next_time():
 if __name__ == "__main__":
     save_data()
     print("initial setup")
-    while True:
-        time.sleep(get_next_time())
-        save_data()
+    # while True:
+    #     time.sleep(get_next_time())
+    #     save_data()
