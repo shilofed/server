@@ -59,4 +59,4 @@ def get_best_game(arg):
 if __name__ == "__main__":
 
     # app.debug = True
-    app.run(host='0.0.0.0')  # initialize server
+    app.run(host='3.88.105.233')  # initialize server
