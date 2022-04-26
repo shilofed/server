@@ -55,6 +55,9 @@ def get_best_game(arg):
     # print("return")
     return json.dumps(json_response)
 
+@app.route("/")
+def get_best_game():
+    return 'hello world'
 
 if __name__ == "__main__":
 
