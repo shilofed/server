@@ -21,9 +21,6 @@ def get_best_game(arg):
             self.best_teams = game_stats.get_score_best_teams()
             self.personal_performance = game_stats.get_score_personal_performance()
             self.high_game_rate = game_stats.get_score_game_rate()
-    # print(arg)
-    # with open("games.gms", "rb") as f:
-    #     games = pickle.load(f)
     biggest_score = -np.inf
     pref = arg.split(";")
     pref = list(filter(bool, pref))
@@ -46,8 +43,6 @@ def get_best_game(arg):
             score += int(pref_dict['High_game_rate']) * game_class.high_game_rate
         if 'personal_performance' in pref_dict:
             score += int(pref_dict['personal_performance']) * game_class.personal_performance
-
-        # print("score= ", score)
         if score > biggest_score:
             biggest_score = score
             best_score = game_class.game
@@ -58,10 +53,8 @@ def get_best_game(arg):
         json_response["response_tag"] = 1
         json_response["team_1_id"] = int(best_score.line_score.TEAM_ID[0])
         json_response["team_2_id"] = int(best_score.line_score.TEAM_ID[1])
-    # print("biggest score = ", biggest_score)
-    # print("return")
     return json.dumps(json_response)
-    #return 'hello'
+
 
 
 @app.route("/")
