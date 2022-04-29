@@ -59,7 +59,7 @@ def get_best_game(arg):
 
 @app.route("/")
 def hello():
-    return 'hello worldfsfd'
+    return 'hello world'
 
 if __name__ == "__main__":
 
