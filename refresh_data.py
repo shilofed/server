@@ -26,16 +26,25 @@ def save_data():
     print("refreshed")
 
 
+def get_future_games():
+    games = games_stats_factory.get_future_games_teams()
+    with open("future_games.pkl", "wb") as f:
+        pickle.dump(games, f)
+    print("refreshed")
+
+
 def get_next_time():
     x = datetime.today()
-    y = x.replace(day=x.day, hour=1, minute=0, second=0, microsecond=0) + timedelta(days=1)
+    y = x.replace(day=x.day, hour=6, minute=50, second=0, microsecond=0) + timedelta(days=1)
     delta_t = y - x
     return delta_t.total_seconds()
 
 
 if __name__ == "__main__":
     save_data()
+    get_future_games()
     print("initial setup")
-    # while True:
-    #     time.sleep(get_next_time())
-    #     save_data()
+    while True:
+        time.sleep(get_next_time())
+        save_data()
+        get_future_games()

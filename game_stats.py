@@ -5,11 +5,13 @@ s_comebacks = 5.3589203158319645
 s_best_teams = 4.362217413275033
 s_close_games = 7.384647929796666
 s_personal_performances = 11.911523582204435
+s_game_rate = 14.091811455759634
 
 mean_best_teams = 20.058902979060605
 mean_close_games = -3.515874770433119
 mean_comebacks = 6.666666666666667
 mean_personal_performances = 34.47330282227308
+mean_game_rate = 225.6846038863976
 
 class GameStats:
 
@@ -104,7 +106,10 @@ class GameStats:
                 score_second_team = np.max([score_second_team, cur_score - 20])
         return (np.max([0.75 * score_first_team + score_second_team, score_first_team + 0.75 * score_second_team]) - mean_personal_performances) / s_personal_performances
 
-
     def get_score_game_rate(self):
-
-        return 0  #  to implement
+        play_by_play = self.play_by_play
+        play_by_play2 = play_by_play[play_by_play.EVENTMSGACTIONTYPE > 0]
+        fouls = play_by_play2[play_by_play2.EVENTMSGTYPE == 6]
+        no_subs_and_reb = len(play_by_play2)
+        num_of_fouls = len(fouls)
+        return (no_subs_and_reb - (num_of_fouls * 2) - mean_game_rate) / s_game_rate
