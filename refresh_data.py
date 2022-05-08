@@ -44,7 +44,7 @@ if __name__ == "__main__":
     save_data()
     get_future_games()
     print("initial setup")
-    while True:
-        time.sleep(get_next_time())
-        save_data()
-        get_future_games()
+    # while True:
+    #     time.sleep(get_next_time())
+    #     save_data()
+    #     get_future_games()
