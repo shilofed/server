@@ -17,7 +17,8 @@ class Game:
 
 
 def save_data():
-    games_stats = games_stats_factory.get_games_stats()
+    day = datetime.strptime("2022-04-01", "%Y-%m-%d")
+    games_stats = games_stats_factory.get_games_stats(games_date=day)
     games = []
     for game in games_stats:
         games.append(Game(game))
@@ -27,7 +28,8 @@ def save_data():
 
 
 def get_future_games():
-    games = games_stats_factory.get_future_games_teams()
+    day = datetime.strptime("2022-04-02", "%Y-%m-%d")
+    games = games_stats_factory.get_future_games_teams(games_date=day)
     with open("future_games.pkl", "wb") as f:
         pickle.dump(games, f)
     print("refreshed")

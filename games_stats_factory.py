@@ -93,7 +93,7 @@ def get_future_games_ids(games_date=get_today()):
     """
     games = scoreboardv2.ScoreboardV2(game_date=games_date, day_offset='00')
     games_df = games.game_header.get_data_frame()
-    games_df = games_df[games_df["GAME_STATUS_ID"] == 1]  # only games that did not start
+    # games_df = games_df[games_df["GAME_STATUS_ID"] == 1]  # only games that did not start
     games_ids = [game_id for game_id in games_df["GAME_ID"]]
     return games_ids
 
